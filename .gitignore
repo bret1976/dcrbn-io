@@ -1,0 +1,8 @@
+node_modules
+.next
+.vercel
+*.log
+.DS_Store
+.env*
+public/scroll-world/vid/
+tsconfig.tsbuildinfo
