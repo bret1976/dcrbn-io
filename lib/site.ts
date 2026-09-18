@@ -67,6 +67,7 @@ export const FOOTER = {
 
 export function absoluteUrl(path = "/") {
   if (path.startsWith("http")) return path;
+  if (!path || path === "/") return SITE.url;
   return `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
