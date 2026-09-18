@@ -1,9 +1,9 @@
 export const SEO = {
   home: {
-    title: "DCRBN | Speed to Scale for AI, Blockchain, and Quantum",
+    title: "DCRBN | Speed to Scale for AI, Blockchain, and Quantum Founders",
     description:
-      "DCRBN is a Las Vegas venture studio providing Speed to Scale for infrastructure companies in AI, blockchain, and quantum.",
-    h1: "Speed to Scale for AI, Blockchain, and Quantum Founders",
+      "DCRBN is a Speed to Scale platform for founders building infrastructure in AI, blockchain, and quantum. We bring resources, network, visibility, agentic infrastructure, partnerships, advisory support, venture studio capabilities, and capital readiness to accelerate founder growth.",
+    h1: "Speed to Scale",
   },
   speedToScale: {
     title: "Speed to Scale | DCRBN Founder Growth Platform",

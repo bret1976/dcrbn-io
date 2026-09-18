@@ -1,11 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { GeistSans } from "geist/font/sans";
+import { DM_Sans } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import { GoogleAds } from "@/components/GoogleAds";
 import { JsonLd } from "@/components/JsonLd";
 import { SITE } from "@/lib/site";
 import { SEO } from "@/lib/copy";
 import "./globals.css";
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  weight: ["200", "300", "400", "500"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -14,27 +20,10 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description: SEO.home.description,
-  keywords: [
-    "DCRBN",
-    "Las Vegas venture studio",
-    "Speed to Scale",
-    "AI infrastructure",
-    "blockchain infrastructure",
-    "quantum infrastructure",
-    "founder advisory",
-    "venture studio",
-  ],
-  alternates: {
-    canonical: "/",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-    },
-  },
+  applicationName: SITE.name,
+  authors: [{ name: SITE.legalName, url: SITE.url }],
+  robots: { index: true, follow: true },
+  alternates: { canonical: "/" },
   openGraph: {
     title: SEO.home.title,
     description: SEO.home.description,
@@ -62,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className={GeistSans.className}>
+    <html lang="en" className={`${dmSans.variable} ${GeistMono.variable}`}>
+      <body className={`${dmSans.className} bg-black font-sans text-[#f4f4f4] antialiased`}>
         <JsonLd />
         <GoogleAds />
         {children}

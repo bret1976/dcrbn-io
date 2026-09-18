@@ -1,385 +1,181 @@
-import Link from "next/link";
-import {
-  ADVISORY_CAPABILITIES,
-  ALIGN_WAYS,
-  CONSTRAINTS,
-  CONTROLLED_COMPANIES,
-  EXECUTION_PROOF,
-  FOCUS_AREAS,
-  GROWTH_LAYERS,
-  NETWORK_VALUES,
-  PHASES,
-  TRACTION_SIGNALS,
-  VENTURE_CAPABILITIES,
-} from "@/lib/copy";
-import { SITE } from "@/lib/site";
-import { SiteFooter } from "@/components/SiteChrome";
+"use client";
 
-const FAQ = [
-  {
-    q: "What is Speed to Scale?",
-    a: "Speed to Scale is DCRBN’s growth platform for infrastructure founders. We identify the real constraint, deploy only the growth layers required to move it, and coordinate resources, relationships, systems, and operators toward the outcomes that accelerate the company’s next stage.",
-  },
-  {
-    q: "Who does DCRBN back?",
-    a: "We back infrastructure founders already in motion — especially across AI, blockchain, and quantum — with real traction signals such as paying customers, revenue, LOIs, pilots, IP, strong teams, or founder-market fit. We are not built for founders who only have an idea and want someone else to build it.",
-  },
-  {
-    q: "What focus areas does DCRBN cover?",
-    a: "DCRBN partners with founders building foundational systems across AI infrastructure, blockchain and Web3 infrastructure, quantum infrastructure, and adjacent frontiers such as defense, robotics, and media infrastructure.",
-  },
-  {
-    q: "How does the Growth Cycle work?",
-    a: "The Speed to Scale Growth Cycle moves through Diagnose, Design, Assemble, Execute, Amplify, and Evolve. DCRBN does not deploy every capability to every company — we activate the right layers at the right time.",
-  },
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { Cta } from "@/components/Cta";
+import { FOCUS_AREAS, GROWTH_LAYERS } from "@/lib/copy";
+
+const FOCUS = [
+  { ...FOCUS_AREAS[0], src: "/images/focus-ai.png", href: "/focus-areas#ai" },
+  { ...FOCUS_AREAS[1], src: "/images/focus-blockchain.png", href: "/focus-areas#blockchain" },
+  { ...FOCUS_AREAS[2], src: "/images/focus-quantum.png", href: "/focus-areas#quantum" },
+  { ...FOCUS_AREAS[3], src: "/images/focus-adjacent.png", href: "/focus-areas#adjacent" },
 ] as const;
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "@id": `${SITE.url}/#faq`,
-  mainEntity: FAQ.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.a,
-    },
-  })),
-};
+const PHASES = ["Diagnose", "Design", "Assemble", "Evolve"] as const;
+const NETWORK = ["DCRBN", "Sixframe", "Lotus Trader", "Viral Growth OS", "Speed to Scale"] as const;
 
 export default function HomeRest() {
+  const [active, setActive] = useState(0);
+
   return (
-    <div className="below">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-
-      <section className="band band--mission" id="mission" aria-labelledby="mission-heading">
-        <div className="band__rail">
-          <p className="band__kicker">Why We Exist</p>
-          <h2 id="mission-heading">
-            Backing the infrastructure layer of{" "}
-            <em>an abundant future.</em>
-          </h2>
-        </div>
-        <div className="band__copy">
-          <p>
-            The next era of innovation will be built on new infrastructure:
-            intelligent systems, decentralized networks, secure computation,
-            quantum technologies, and tools that expand what humanity can create.
-          </p>
-          <p>
-            DCRBN exists to be a force multiplier for founders building solutions
-            that can help shape a future of abundance.
-          </p>
+    <div className="relative z-[1] bg-black text-[#f4f4f4]">
+      <section className="border-y border-white/10 py-10 md:py-20">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-center gap-x-8 gap-y-5 px-5 md:gap-x-12 md:px-12">
+          {GROWTH_LAYERS.map((item, index) => (
+            <span key={item} className="flex items-center gap-8 md:gap-12">
+              <span className="text-[11px] font-medium tracking-[0.28em] text-white/55 uppercase">{item}</span>
+              {index < GROWTH_LAYERS.length - 1 ? <span className="hidden h-px w-8 bg-white/20 sm:block" /> : null}
+            </span>
+          ))}
         </div>
       </section>
 
-      <section className="band" id="who-we-back" aria-labelledby="who-heading">
-        <div className="band__intro">
-          <p className="band__kicker">Who We Back</p>
-          <h2 id="who-heading">
-            Infrastructure founders with <em>real signals.</em>
-          </h2>
-          <p>
-            We look beyond the idea. We look at the founder, the quality of the
-            human, the vision, the problem being solved, the team assembled, and
-            the evidence that the market is starting to respond.
-          </p>
-          <p>
-            We are especially drawn to founders building infrastructure across AI,
-            blockchain, and quantum — projects that can support new markets, new
-            systems, and new ways for people and organizations to operate.
-          </p>
-          <p>
-            We are not built for founders who simply have a good idea and want
-            someone else to build their vision. We work with founders who are
-            already moving and want the right ecosystem around them to go faster.
-          </p>
-        </div>
-        <div className="signal-grid" aria-label="Traction signals">
-          {TRACTION_SIGNALS.map((item) => (
-            <div key={item} className="signal-chip">
-              {item}
+      <section className="px-5 py-16 md:px-12 md:py-32">
+        <div className="mx-auto grid max-w-[1400px] items-end gap-10 lg:grid-cols-[auto_1fr] lg:gap-16">
+          <dl className="flex gap-8 sm:gap-12">
+            <div>
+              <dt className="text-[10px] tracking-[0.22em] text-white/40 uppercase sm:text-[11px]">Stage Growth Cycle</dt>
+              <dd className="mt-2 text-[4.2rem] leading-none font-extralight tracking-[-0.05em] sm:mt-3 sm:text-[5.5rem]">6</dd>
             </div>
-          ))}
+            <div>
+              <dt className="text-[10px] tracking-[0.22em] text-white/40 uppercase sm:text-[11px]">Core Verticals</dt>
+              <dd className="mt-2 text-[4.2rem] leading-none font-extralight tracking-[-0.05em] sm:mt-3 sm:text-[5.5rem]">3</dd>
+            </div>
+          </dl>
+          <div className="max-w-[42rem] border-l border-white/15 pl-6 md:pl-12">
+            <h2 className="text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.05] font-extralight tracking-[-0.035em]">
+              Great founders still hit growth constraints.
+            </h2>
+            <p className="mt-6 text-[16px] leading-relaxed font-light text-white/62">
+              Even strong founders stall when they lack the right visibility, strategy, infrastructure,
+              partnerships, customers, paid pilots, capital readiness, or operator support.
+            </p>
+            <Link
+              href="/growth-cycle"
+              className="mt-8 inline-flex text-[11px] tracking-[0.2em] text-white/80 uppercase no-underline hover:text-white"
+            >
+              See how the Growth Cycle works →
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="band band--dim" id="constraints" aria-labelledby="constraints-heading">
-        <div className="band__intro band__intro--narrow">
-          <p className="band__kicker">The Constraint</p>
-          <h2 id="constraints-heading">
-            Great founders still hit <em>growth constraints.</em>
+      <section className="border-t border-white/10 px-5 py-14 md:px-12 md:py-28">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-[11px] tracking-[0.28em] text-white/45 uppercase">Focus Areas</p>
+            <Cta href="/focus-areas" variant="ghost" className="shrink-0 text-white/70 hover:text-white">
+              All verticals →
+            </Cta>
+          </div>
+          <h2 className="mt-4 max-w-[16ch] text-[clamp(1.85rem,8vw,3.4rem)] leading-[1.05] font-extralight tracking-[-0.035em] text-white">
+            The infrastructure we partner on.
           </h2>
-          <p>
-            Even strong founders stall when they lack the right visibility,
-            strategy, infrastructure, partnerships, customers, paid pilots,
-            capital readiness, or operator support.
-          </p>
-          <p>
-            DCRBN brings the resources, relationships, and execution ecosystem
-            that help inspired founders move faster.
-          </p>
-        </div>
-        <div className="bento bento--constraints">
-          {CONSTRAINTS.map((item) => (
-            <article key={item} className="bento__cell bento__cell--tight">
-              <h3>{item}</h3>
-            </article>
-          ))}
+          <div className="relative mt-8 flex flex-col-reverse gap-6 md:mt-12 md:gap-8 lg:block">
+            <ol className="border-b border-white/12 lg:w-[52%]">
+              {FOCUS.map((item, index) => {
+                const on = index === active;
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onMouseEnter={() => setActive(index)}
+                      onFocus={() => setActive(index)}
+                      className={`group grid min-h-14 grid-cols-[2.5rem_1fr] gap-3 border-t border-white/12 py-4 no-underline transition duration-300 md:grid-cols-[4.5rem_1fr] md:gap-8 md:py-5 ${on ? "bg-white/[0.045]" : ""}`}
+                    >
+                      <span className={`font-mono text-[11px] tracking-[0.28em] transition duration-300 ${on ? "text-white" : "text-white/35"}`}>
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span>
+                        <span className={`block text-[clamp(1.2rem,2.2vw,1.85rem)] font-extralight tracking-[-0.03em] transition duration-300 ${on ? "text-white" : "text-white/55"}`}>
+                          {item.title}
+                        </span>
+                        <span className={`mt-1.5 block max-w-[36rem] text-[13px] leading-snug font-light transition duration-300 md:text-[14px] ${on ? "text-white/62" : "text-white/38"}`}>
+                          {item.body}
+                        </span>
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ol>
+            <div className="sticky top-[calc(64px+env(safe-area-inset-top))] z-[1] aspect-[16/10] overflow-hidden border border-white/10 bg-black lg:absolute lg:inset-y-0 lg:right-0 lg:top-auto lg:z-auto lg:aspect-auto lg:w-[44%]">
+              {FOCUS.map((item, index) => (
+                <div
+                  key={item.src}
+                  className="absolute inset-0 transition-opacity duration-700 ease-out"
+                  style={{ opacity: index === active ? 1 : 0 }}
+                  aria-hidden={index !== active}
+                >
+                  <Image src={item.src} alt="" fill className={`object-cover transition duration-[1.2s] ease-out ${index === active ? "scale-105 opacity-90" : "scale-100 opacity-70"}`} sizes="(max-width: 1024px) 100vw, 45vw" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+                  <div className="inner-grain absolute inset-0" />
+                </div>
+              ))}
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between px-5 py-5">
+                <p className="max-w-[18ch] text-[13px] font-extralight tracking-[-0.02em] text-white/85">{FOCUS[active].title}</p>
+                <p className="font-mono text-[11px] tracking-[0.28em] text-white/45">
+                  {String(active + 1).padStart(2, "0")} / 04
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="band" id="growth-cycle" aria-labelledby="growth-heading">
-        <div className="band__intro">
-          <p className="band__kicker">Speed to Scale</p>
-          <h2 id="growth-heading">
-            The Speed to Scale <em>Growth Cycle.</em>
-          </h2>
-          <p>
-            DCRBN identifies the real constraint, deploys only the layers required
-            to move it, and coordinates resources, relationships, systems, and
-            operators toward the outcomes that can accelerate the company’s next
-            stage.
-          </p>
-          <p>
-            DCRBN does not deploy every capability to every company. We identify
-            the bottleneck and activate the right growth layers at the right time.
-          </p>
-          <div className="layer-row" aria-label="Growth layers">
-            {GROWTH_LAYERS.map((item) => (
-              <span key={item}>{item}</span>
+      <section className="relative overflow-hidden bg-black">
+        <div className="absolute inset-0">
+          <Image src="/images/concrete-corridor.png" alt="" fill className="object-cover object-center opacity-50" sizes="100vw" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/78 to-black/30" />
+        </div>
+        <div className="relative mx-auto grid min-h-[70svh] max-w-[1400px] items-end gap-10 px-5 py-16 md:px-12 md:py-24 lg:grid-cols-[1.15fr_.85fr] lg:gap-12">
+          <div>
+            <p className="text-[11px] tracking-[0.28em] text-white/55 uppercase">Built to be a force multiplier.</p>
+            <h2 className="mt-5 max-w-[16ch] text-[clamp(2.1rem,4.8vw,4rem)] leading-[1.02] font-extralight tracking-[-0.035em]">
+              Proof across companies, portfolio, and execution.
+            </h2>
+            <p className="mt-6 max-w-[46ch] text-[15px] leading-relaxed font-light text-white/68">
+              DCRBN was founded by Majid Zafer and Cory Warfield around a simple operating idea: the
+              golden rule, applied to company building. Treat people the way you want to be treated —
+              and become a force multiplier for founders already building infrastructure that matters.
+            </p>
+            <Cta href="/proof" className="mt-8 border-white/20 text-white hover:border-white/50">
+              See the proof structure →
+            </Cta>
+          </div>
+          <ol className="flex flex-col gap-1 pb-2">
+            {PHASES.map((item, index) => (
+              <li
+                key={item}
+                className="flex items-baseline justify-between border-b border-white/12 py-4 text-[1.4rem] font-extralight tracking-[0.16em] text-white/70 uppercase"
+              >
+                <span>{item}</span>
+                <span className="font-mono text-[11px] tracking-[0.2em] text-white/35">{String(index + 1).padStart(2, "0")}</span>
+              </li>
             ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 px-5 py-14 md:px-12 md:py-24">
+        <div className="mx-auto max-w-[1400px]">
+          <p className="text-[11px] tracking-[0.28em] text-white/45 uppercase">Our Network</p>
+          <ul className="mt-10 flex flex-wrap gap-x-12 gap-y-5">
+            {NETWORK.map((item) => (
+              <li key={item} className="text-[1.5rem] font-extralight tracking-[-0.02em] text-white/75 md:text-[2rem]">
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-14">
+            <Cta href="/strategic-alignment" variant="ghost" className="text-white/70 hover:text-white">
+              Explore Strategic Alignment →
+            </Cta>
           </div>
         </div>
-        <div className="phase-rail">
-          {PHASES.map((phase, index) => (
-            <article key={phase.name} className="phase-card">
-              <span className="phase-card__n">{String(index + 1).padStart(2, "0")}</span>
-              <h3>{phase.name}</h3>
-              <p>{phase.body}</p>
-            </article>
-          ))}
-        </div>
-        <Link href="/growth-cycle" className="band__cta">
-          See how the Growth Cycle works ↗
-        </Link>
       </section>
-
-      <section className="band band--dim" id="focus-areas" aria-labelledby="focus-heading">
-        <div className="band__head-row">
-          <div>
-            <p className="band__kicker">Focus Areas</p>
-            <h2 id="focus-heading">
-              Infrastructure that can <em>move the world.</em>
-            </h2>
-            <p className="band__lede">
-              DCRBN partners with founders building the foundational systems behind
-              the next era of technology.
-            </p>
-          </div>
-          <Link href="/focus-areas" className="band__cta band__cta--inline">
-            Explore focus areas ↗
-          </Link>
-        </div>
-        <div className="bento bento--focus">
-          {FOCUS_AREAS.map((area, i) => (
-            <article key={area.title} className={`bento__cell ${i === 0 ? "bento__cell--wide" : ""}`}>
-              <h3>{area.title}</h3>
-              <p>{area.body}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="band" id="platform" aria-labelledby="platform-heading">
-        <div className="band__intro band__intro--narrow">
-          <p className="band__kicker">The Platform</p>
-          <h2 id="platform-heading">
-            Advisory when you need leverage. <em>Studio when you need to build.</em>
-          </h2>
-        </div>
-        <div className="duo">
-          <article className="duo__panel" id="advisory">
-            <p className="band__kicker">Advisory &amp; Consulting</p>
-            <h3>Applied strategic support for inspired founders.</h3>
-            <p>
-              DCRBN supports founders and companies with strategy, positioning,
-              partnerships, capital readiness, growth architecture, and operator
-              support. This is not passive advisory.
-            </p>
-            <ul className="cap-list">
-              {ADVISORY_CAPABILITIES.map((item) => (
-                <li key={item.title}>
-                  <strong>{item.title}</strong>
-                  <span>{item.body}</span>
-                </li>
-              ))}
-            </ul>
-            <Link href="/advisory" className="band__cta">
-              Explore Advisory &amp; Consulting ↗
-            </Link>
-          </article>
-          <article className="duo__panel duo__panel--accent" id="venture-studio">
-            <p className="band__kicker">Venture Studio</p>
-            <h3>We do not just advise. We help build.</h3>
-            <p>
-              DCRBN Venture Studio is the build side of the platform. We selectively
-              partner with founders, products, and opportunities where DCRBN can
-              help turn proven insight, workflow, technology, or market opportunity
-              into a scalable business.
-            </p>
-            <div className="layer-row layer-row--compact">
-              {VENTURE_CAPABILITIES.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-            <div className="studio-cards">
-              {CONTROLLED_COMPANIES.map((company) => (
-                <Link key={company.slug} href={company.href} className="studio-card">
-                  <strong>{company.name}</strong>
-                  <span>{company.oneLiner}</span>
-                </Link>
-              ))}
-            </div>
-            <Link href="/venture-studio" className="band__cta">
-              Visit the Venture Studio ↗
-            </Link>
-          </article>
-        </div>
-      </section>
-
-      <section className="band band--dim" id="proof" aria-labelledby="proof-heading">
-        <div className="band__head-row">
-          <div>
-            <p className="band__kicker">Proof</p>
-            <h2 id="proof-heading">
-              Proof across companies, portfolio, and <em>execution.</em>
-            </h2>
-            <p className="band__lede">
-              DCRBN’s proof is organized by what we control, what we support, and
-              what outcomes have been created or influenced through the platform.
-            </p>
-          </div>
-          <Link href="/proof" className="band__cta band__cta--inline">
-            See the proof structure ↗
-          </Link>
-        </div>
-        <div className="bento bento--proof">
-          {EXECUTION_PROOF.filter((item) => item.approvalStatus === "Approved").map(
-            (item) => (
-              <article key={item.title} className="bento__cell">
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            )
-          )}
-        </div>
-        <p className="band__note">
-          Portfolio and partner companies appear here when DCRBN and the company
-          both approve a public mention.
-        </p>
-      </section>
-
-      <section className="band" id="network" aria-labelledby="network-heading">
-        <div className="band__intro">
-          <p className="band__kicker">Our Network</p>
-          <h2 id="network-heading">
-            A network built to accelerate <em>inspired founders.</em>
-          </h2>
-          <p>
-            Great solutions need great people around them. DCRBN brings together
-            operators, advisors, strategists, creators, technologists, investors,
-            and strategic partners who can help founders move faster.
-          </p>
-          <p>
-            This network is not a logo wall. It is an active growth asset designed
-            to support visibility, partnerships, paid pilots, customer access,
-            capital readiness, and company-building execution.
-          </p>
-        </div>
-        <div className="bento bento--network">
-          {NETWORK_VALUES.map((item) => (
-            <article key={item} className="bento__cell bento__cell--tight">
-              <h3>{item}</h3>
-            </article>
-          ))}
-        </div>
-        <Link href="/network" className="band__cta">
-          Meet the DCRBN network ↗
-        </Link>
-      </section>
-
-      <section className="band band--dim" id="partners" aria-labelledby="partners-heading">
-        <div className="band__intro">
-          <p className="band__kicker">Partners &amp; Investors</p>
-          <h2 id="partners-heading">
-            For partners and investors aligned with <em>purpose.</em>
-          </h2>
-          <p>
-            DCRBN creates access to founders building infrastructure across AI,
-            blockchain, and quantum. For strategic partners, advisors, and
-            investors, the platform creates opportunities to align early with
-            companies solving meaningful problems and building toward a future of
-            abundance.
-          </p>
-        </div>
-        <div className="bento bento--align">
-          {ALIGN_WAYS.map((item) => (
-            <article key={item} className="bento__cell bento__cell--tight">
-              <h3>{item}</h3>
-            </article>
-          ))}
-        </div>
-        <Link href="/strategic-alignment" className="band__cta">
-          Explore strategic alignment ↗
-        </Link>
-      </section>
-
-      <section className="band band--origin" id="origin" aria-labelledby="origin-heading">
-        <p className="band__kicker">Origin</p>
-        <h2 id="origin-heading">Built to be a force multiplier.</h2>
-        <p>
-          DCRBN was founded by Majid Zafer and Cory Warfield around a simple
-          operating idea: the golden rule, applied to company building. Treat
-          people the way you want to be treated — and become a force multiplier
-          for founders already building infrastructure that matters.
-        </p>
-        <Link href="/about" className="band__cta">
-          About DCRBN ↗
-        </Link>
-      </section>
-
-      <section className="band band--faq" id="faq" aria-labelledby="faq-heading">
-        <div className="band__intro band__intro--narrow">
-          <p className="band__kicker">FAQ</p>
-          <h2 id="faq-heading">Questions founders and partners ask.</h2>
-        </div>
-        <div className="faq-list">
-          {FAQ.map((item) => (
-            <details key={item.q} className="faq-item">
-              <summary>{item.q}</summary>
-              <p>{item.a}</p>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      <section className="close" id="apply" aria-labelledby="apply-heading">
-        <p>Building Infrastructure That Inspires Us?</p>
-        <h2 id="apply-heading">
-          If you are a founder building in AI, blockchain, or quantum with
-          traction, DCRBN may be the force multiplier around your next stage of
-          growth.
-        </h2>
-        <Link href="/apply" className="button primary">
-          Apply for Speed to Scale ↗
-        </Link>
-      </section>
-      <SiteFooter />
     </div>
   );
 }

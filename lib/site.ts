@@ -51,14 +51,14 @@ export const FOOTER = {
   ],
   company: [
     { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
     { label: "Our Network", href: "/network" },
     { label: "Focus Areas", href: "/focus-areas" },
     { label: "Strategic Alignment", href: "/strategic-alignment" },
+    { label: "Contact", href: "/contact" },
   ],
   start: [
     { label: "Apply for Speed to Scale", href: "/apply" },
-    { label: "Contact DCRBN", href: "/contact" },
+    { label: "Explore Strategic Alignment", href: "/strategic-alignment" },
   ],
   legal: [
     { label: "Privacy", href: "/privacy" },
