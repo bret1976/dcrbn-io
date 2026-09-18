@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackAdsConversion } from "@/lib/ads";
 import { GROWTH_LAYERS } from "@/lib/copy";
 
 const FRONTIERS = ["AI", "Blockchain", "Quantum", "Adjacent frontier"] as const;
@@ -27,6 +28,7 @@ export function ApplyForm() {
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Unable to submit");
+      trackAdsConversion();
       setStatus("done");
       form.reset();
     } catch (err) {

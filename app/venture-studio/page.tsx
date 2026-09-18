@@ -2,15 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ContentPage from "@/components/ContentPage";
 import { CONTROLLED_COMPANIES, SEO, VENTURE_CAPABILITIES } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: SEO.ventureStudio.title,
-  description: SEO.ventureStudio.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.ventureStudio, "/venture-studio");
 
 export default function VentureStudioPage() {
   return (
     <ContentPage
+      active="/venture-studio"
       kicker="VENTURE STUDIO"
       title="We do not just advise."
       em="We help build."

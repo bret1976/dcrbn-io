@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { NETWORK_VALUES, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: SEO.network.title,
-  description: SEO.network.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.network, "/network");
 
 export default function NetworkPage() {
   return (

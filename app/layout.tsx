@@ -1,56 +1,52 @@
 import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { GoogleAds } from "@/components/GoogleAds";
+import { JsonLd } from "@/components/JsonLd";
+import { SITE } from "@/lib/site";
+import { SEO } from "@/lib/copy";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.dcrbn.io"),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "DCRBN | Speed to Scale for AI, Blockchain, and Quantum Founders",
+    default: SEO.home.title,
     template: "%s",
   },
-  description:
-    "DCRBN is a Speed to Scale platform for founders building infrastructure in AI, blockchain, and quantum. We bring resources, network, visibility, agentic infrastructure, partnerships, advisory support, venture studio capabilities, and capital readiness to accelerate founder growth.",
+  description: SEO.home.description,
   keywords: [
-    "AI",
-    "blockchain",
-    "quantum",
+    "DCRBN",
+    "Las Vegas venture studio",
     "Speed to Scale",
-    "force multiplier",
-    "infrastructure founders",
     "AI infrastructure",
-    "Web3 infrastructure",
+    "blockchain infrastructure",
     "quantum infrastructure",
-    "venture studio",
     "founder advisory",
-    "capital readiness",
-    "growth platform",
+    "venture studio",
   ],
   alternates: {
-    canonical: "https://www.dcrbn.io",
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
   openGraph: {
-    title: "DCRBN | Speed to Scale for AI, Blockchain, and Quantum Founders",
-    description:
-      "DCRBN is a Speed to Scale platform for founders building infrastructure in AI, blockchain, and quantum.",
-    url: "https://www.dcrbn.io",
-    siteName: "DCRBN",
-    images: [
-      {
-        url: "https://www.dcrbn.io/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "DCRBN — Speed to Scale for AI, blockchain, and quantum founders",
-      },
-    ],
+    title: SEO.home.title,
+    description: SEO.home.description,
+    url: SITE.url,
+    siteName: SITE.name,
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DCRBN | Speed to Scale",
-    description:
-      "DCRBN is a Speed to Scale platform for founders building infrastructure in AI, blockchain, and quantum.",
-    images: ["https://www.dcrbn.io/opengraph-image"],
+    title: SEO.home.title,
+    description: SEO.home.description,
   },
 };
 
@@ -66,12 +62,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className={`${GeistSans.className} ${GeistMono.className}`}>
+        <JsonLd />
+        <GoogleAds />
         {children}
       </body>
     </html>

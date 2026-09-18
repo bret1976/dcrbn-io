@@ -9,7 +9,6 @@ import {
   GROWTH_LAYERS,
   NETWORK_VALUES,
   PHASES,
-  PLACEHOLDER,
   TRACTION_SIGNALS,
   VENTURE_CAPABILITIES,
 } from "@/lib/copy";
@@ -35,62 +34,18 @@ const FAQ = [
   },
 ] as const;
 
-const jsonLd = {
+const faqJsonLd = {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": `${SITE.url}/#organization`,
-      name: SITE.name,
-      legalName: SITE.legalName,
-      url: SITE.url,
-      description: SITE.positioning,
-      telephone: SITE.phone,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: SITE.address.street,
-        addressLocality: SITE.address.city,
-        addressRegion: SITE.address.region,
-        postalCode: SITE.address.postal,
-        addressCountry: SITE.address.country,
-      },
-      founder: [
-        { "@type": "Person", name: "Majid Zafer", jobTitle: "CEO" },
-        { "@type": "Person", name: "Cory Warfield", jobTitle: "Co-Founder" },
-      ],
-      areaServed: "Worldwide",
-      knowsAbout: [
-        "AI infrastructure",
-        "blockchain",
-        "quantum",
-        "Speed to Scale",
-        "force multiplier",
-        "venture studio",
-        "founder advisory",
-      ],
+  "@type": "FAQPage",
+  "@id": `${SITE.url}/#faq`,
+  mainEntity: FAQ.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.a,
     },
-    {
-      "@type": "WebSite",
-      "@id": `${SITE.url}/#website`,
-      url: SITE.url,
-      name: SITE.name,
-      description: SITE.positioning,
-      publisher: { "@id": `${SITE.url}/#organization` },
-      inLanguage: "en-US",
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${SITE.url}/#faq`,
-      mainEntity: FAQ.map((item) => ({
-        "@type": "Question",
-        name: item.q,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: item.a,
-        },
-      })),
-    },
-  ],
+  })),
 };
 
 export default function HomeRest() {
@@ -98,7 +53,7 @@ export default function HomeRest() {
     <div className="below">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <section className="band band--mission" id="mission" aria-labelledby="mission-heading">
@@ -323,7 +278,10 @@ export default function HomeRest() {
             )
           )}
         </div>
-        <p className="band__note">{PLACEHOLDER} for portfolio / partner companies.</p>
+        <p className="band__note">
+          Portfolio and partner companies appear here when DCRBN and the company
+          both approve a public mention.
+        </p>
       </section>
 
       <section className="band" id="network" aria-labelledby="network-heading">

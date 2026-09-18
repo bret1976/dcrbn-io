@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { PHASES, SEO, TEAM } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: SEO.about.title,
-  description: SEO.about.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.about, "/about");
 
 export default function AboutPage() {
   return (
     <ContentPage
+      active="/about"
       kicker="ABOUT"
       title="Built to be a"
       em="force multiplier."

@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: SEO.privacy.title,
-  description: SEO.privacy.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.privacy, "/privacy");
 
 export default function PrivacyPage() {
   return (

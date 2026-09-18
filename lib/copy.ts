@@ -1,8 +1,8 @@
 export const SEO = {
   home: {
-    title: "DCRBN | Speed to Scale for AI, Blockchain, and Quantum Founders",
+    title: "DCRBN | Speed to Scale for AI, Blockchain, and Quantum",
     description:
-      "DCRBN is a Speed to Scale platform for founders building infrastructure in AI, blockchain, and quantum. We bring resources, network, visibility, agentic infrastructure, partnerships, advisory support, venture studio capabilities, and capital readiness to accelerate founder growth.",
+      "DCRBN is a Las Vegas venture studio providing Speed to Scale for infrastructure companies in AI, blockchain, and quantum.",
     h1: "Speed to Scale for AI, Blockchain, and Quantum Founders",
   },
   speedToScale: {
@@ -54,10 +54,16 @@ export const SEO = {
     h1: "A Network Built to Accelerate Inspired Founders",
   },
   about: {
-    title: "About DCRBN | Built to Be a Force Multiplier",
+    title: "About DCRBN | Las Vegas Venture Studio",
     description:
-      "DCRBN exists to support solutions that can help shape a future of abundance. We work with founders building meaningful infrastructure across AI, blockchain, quantum, and adjacent frontiers.",
+      "DCRBN is a Las Vegas venture studio built to be a force multiplier for infrastructure companies in AI, blockchain, and quantum.",
     h1: "Built to Be a Force Multiplier",
+  },
+  contact: {
+    title: "Contact DCRBN | Las Vegas Venture Studio",
+    description:
+      "Contact DCRBN in Las Vegas. Talk with the studio about Speed to Scale for infrastructure companies in AI, blockchain, and quantum.",
+    h1: "Talk with DCRBN",
   },
   apply: {
     title: "Apply for Speed to Scale | DCRBN",
@@ -357,7 +363,7 @@ export const TEAM: TeamMember[] = [
     name: "Cory Warfield",
     title: "Co-Founder",
     bio: "Co-Founder of DCRBN. LinkedIn Top Voice and growth operator. Public work includes founder visibility, Tech For Good, and early-stage company building across AI and blockchain.",
-    photo: "/team/cory-warfield.jpg",
+    photo: null,
     linkedin: "https://www.linkedin.com/in/corywarfield/",
     source: "Public LinkedIn profile and DCRBN co-founder listing.",
   },
@@ -365,7 +371,7 @@ export const TEAM: TeamMember[] = [
     name: "Majid Zafer",
     title: "CEO",
     bio: "CEO of DCRBN LLC. Leads the platform across advisory, venture studio, and company-building for infrastructure founders.",
-    photo: "/team/majid-zafer.jpg",
+    photo: null,
     linkedin: null,
     source: "Title published on the prior www.dcrbn.io site.",
   },
@@ -373,7 +379,7 @@ export const TEAM: TeamMember[] = [
     name: "Brett Jenny",
     title: "DCRBN",
     bio: "Builds products and companies inside DCRBN, including Sixframe / 6Frame Studio. Based in Las Vegas.",
-    photo: "/team/brett-jenny.jpg",
+    photo: null,
     linkedin: "https://github.com/VegasCryptoAgent",
     source: "Public GitHub profile (company: DCRBN, location: Las Vegas NV).",
   },

@@ -1,12 +1,5 @@
 import Link from "next/link";
-
-export const NAV = [
-  { href: "/speed-to-scale", label: "Speed to Scale" },
-  { href: "/growth-cycle", label: "Growth Cycle" },
-  { href: "/focus-areas", label: "Focus Areas" },
-  { href: "/proof", label: "Proof" },
-  { href: "/network", label: "Network" },
-] as const;
+import { FOOTER, NAV, SITE } from "@/lib/site";
 
 export function SiteHeader({ active }: { active?: string }) {
   return (
@@ -26,8 +19,8 @@ export function SiteHeader({ active }: { active?: string }) {
           </Link>
         ))}
       </nav>
-      <Link href="/apply" className="ian-home__top-cta">
-        Apply
+      <Link href="/contact" className="ian-home__top-cta">
+        Contact
       </Link>
     </header>
   );
@@ -50,8 +43,8 @@ export function DetailHeader({ active }: { active?: string }) {
           </Link>
         ))}
       </nav>
-      <Link href="/apply" className="detail-contact">
-        Apply ↗
+      <Link href="/contact" className="detail-contact">
+        Contact ↗
       </Link>
     </header>
   );
@@ -59,10 +52,52 @@ export function DetailHeader({ active }: { active?: string }) {
 
 export function SiteFooter() {
   return (
-    <footer className="detail-footer">
-      <Link href="/">DCRBN</Link>
-      <span>SPEED TO SCALE FOR AI, BLOCKCHAIN, AND QUANTUM FOUNDERS</span>
-      <span>© 2026</span>
+    <footer className="site-footer">
+      <div className="site-footer__top">
+        <div className="site-footer__brand">
+          <Link href="/">DCRBN</Link>
+          <p>
+            Las Vegas venture studio. Speed to Scale for infrastructure companies
+            in AI, blockchain, and quantum.
+          </p>
+        </div>
+        <div className="site-footer__cols">
+          <div>
+            <p>Studio</p>
+            {FOOTER.company.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          <div>
+            <p>Platform</p>
+            {FOOTER.platform.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </div>
+          <div>
+            <p>Start</p>
+            {FOOTER.start.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+            {FOOTER.legal.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="site-footer__bottom">
+        <span>{SITE.legalName}</span>
+        <span>Las Vegas, NV</span>
+        <span>© {new Date().getFullYear()}</span>
+      </div>
     </footer>
   );
 }

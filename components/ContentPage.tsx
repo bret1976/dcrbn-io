@@ -45,9 +45,15 @@ export default function ContentPage({
       <section className="detail-cta">
         <p>NEXT / MOVE</p>
         <h2>{ctaTitle}</h2>
-        <Link href={ctaHref} className="button primary">
-          Start the conversation ↗
-        </Link>
+        {ctaHref.startsWith("http") ? (
+          <a href={ctaHref} className="button primary" rel="noopener noreferrer">
+            Start the conversation ↗
+          </a>
+        ) : (
+          <Link href={ctaHref} className="button primary">
+            Start the conversation ↗
+          </Link>
+        )}
       </section>
       <SiteFooter />
     </main>

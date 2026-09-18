@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { ADVISORY_CAPABILITIES, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: SEO.advisory.title,
-  description: SEO.advisory.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.advisory, "/advisory");
 
 export default function AdvisoryPage() {
   return (
