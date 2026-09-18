@@ -63,7 +63,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className={`${GeistSans.className} ${GeistMono.className}`}>
+      <body className={GeistSans.className}>
         <JsonLd />
         <GoogleAds />
         {children}

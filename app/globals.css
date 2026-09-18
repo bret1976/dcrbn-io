@@ -139,13 +139,13 @@ button { font: inherit; }
   display: block;
 }
 .ian-home__content h1 {
-  max-width: 14ch;
+  max-width: 16ch;
   color: var(--ian-ink);
-  letter-spacing: -.07em;
+  letter-spacing: -0.04em;
   margin: 14px 0 0;
   font-size: clamp(2.6rem, 5vw, 4.4rem);
   font-weight: 560;
-  line-height: .92;
+  line-height: 1.02;
 }
 .ian-home__note {
   color: #403a4c;
@@ -982,10 +982,10 @@ button { font: inherit; }
   color: var(--cyan);
 }
 .detail-hero h1 {
-  letter-spacing: -.075em;
+  letter-spacing: -0.04em;
   margin: 55px 0;
-  font-size: clamp(70px, 10vw, 150px);
-  line-height: .83;
+  font-size: clamp(52px, 8vw, 112px);
+  line-height: 0.95;
 }
 .detail-hero h1 em {
   color: var(--cyan);
