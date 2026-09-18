@@ -34,11 +34,12 @@ export const CTA = {
 } as const;
 
 export const NAV = [
-  { label: "About", href: "/about" },
+  { label: "Home", href: "/" },
   { label: "Speed to Scale", href: "/speed-to-scale" },
+  { label: "Growth Cycle", href: "/growth-cycle" },
   { label: "Focus Areas", href: "/focus-areas" },
-  { label: "Ventures", href: "/venture-studio" },
-  { label: "Contact", href: "/contact" },
+  { label: "Proof", href: "/proof" },
+  { label: "Our Network", href: "/network" },
 ] as const;
 
 export const FOOTER = {

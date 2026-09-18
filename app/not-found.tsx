@@ -1,34 +1,22 @@
 import Link from "next/link";
-import { DetailHeader, SiteFooter } from "@/components/SiteChrome";
 
 export default function NotFound() {
   return (
     <main className="detail">
-      <DetailHeader />
+      <Link href="/" className="detail-brand" style={{ padding: "24px 4vw", display: "inline-block" }}>
+        DCRBN
+      </Link>
       <section className="detail-hero">
-        <p>404</p>
+        <p>404 / SIGNAL LOST</p>
         <h1>
-          This page
+          This path
           <br />
-          <em>isn’t here.</em>
+          <em>doesn’t exist.</em>
         </h1>
-        <div className="detail-intro">
-          The link may be outdated. Continue to the studio homepage, about page,
-          or contact DCRBN.
-        </div>
-        <div className="ian-home__actions" style={{ marginTop: 36 }}>
-          <Link href="/" className="button primary">
-            Home ↗
-          </Link>
-          <Link href="/about" className="ian-home__button ian-home__button--secondary">
-            About
-          </Link>
-          <Link href="/contact" className="ian-home__button ian-home__button--secondary">
-            Contact
-          </Link>
-        </div>
+        <Link href="/" className="button primary">
+          Return home ↗
+        </Link>
       </section>
-      <SiteFooter />
     </main>
   );
 }
