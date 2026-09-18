@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import { ApplyForm } from "@/components/ApplyForm";
 import ContentPage from "@/components/ContentPage";
 import { GROWTH_LAYERS, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: SEO.apply.title,
-  description: SEO.apply.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.apply, "/apply");
 
 export default function ApplyPage() {
   return (

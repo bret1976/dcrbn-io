@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { FOCUS_AREAS, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: SEO.focusAreas.title,
-  description: SEO.focusAreas.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.focusAreas, "/focus-areas");
 
 export default function FocusAreasPage() {
   return (

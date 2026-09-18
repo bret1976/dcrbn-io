@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { GROWTH_LAYERS, PHASES, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: SEO.speedToScale.title,
-  description: SEO.speedToScale.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.speedToScale, "/speed-to-scale");
 
 export default function SpeedToScalePage() {
   return (

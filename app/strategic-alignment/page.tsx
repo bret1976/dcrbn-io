@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { ALIGN_PAGE_WAYS, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: SEO.alignment.title,
-  description: SEO.alignment.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.alignment, "/strategic-alignment");
 
 export default function AlignmentPage() {
   return (

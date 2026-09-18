@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { GROWTH_LAYERS, PHASES, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: SEO.growthCycle.title,
-  description: SEO.growthCycle.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.growthCycle, "/growth-cycle");
 
 export default function GrowthCyclePage() {
   return (

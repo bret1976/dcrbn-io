@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContentPage from "@/components/ContentPage";
-import { CONTROLLED_COMPANIES, EXECUTION_PROOF, PLACEHOLDER, SEO } from "@/lib/copy";
+import { CONTROLLED_COMPANIES, EXECUTION_PROOF, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: SEO.proof.title,
-  description: SEO.proof.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.proof, "/proof");
 
 export default function ProofPage() {
   return (
@@ -40,10 +38,11 @@ export default function ProofPage() {
           <h2>Portfolio / Partner Companies</h2>
           <p>
             Companies DCRBN helps build, advise, scale, or support, but does not
-            necessarily control. {PLACEHOLDER}
+            necessarily control. Named partner companies are listed here when both
+            DCRBN and the company approve a public mention.
           </p>
         </article>
-        {EXECUTION_PROOF.map((item, index) => (
+        {EXECUTION_PROOF.filter((item) => item.approvalStatus === "Approved").map((item, index) => (
           <article key={item.title}>
             <span>{String(index + 3).padStart(2, "0")}</span>
             <h2>{item.title}</h2>

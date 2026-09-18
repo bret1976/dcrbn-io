@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { CONTROLLED_COMPANIES, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
 const company = CONTROLLED_COMPANIES.find((c) => c.slug === "sixframe")!;
 
-export const metadata: Metadata = {
-  title: SEO.sixframe.title,
-  description: SEO.sixframe.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.sixframe, "/sixframe");
 
 export default function SixframePage() {
   return (

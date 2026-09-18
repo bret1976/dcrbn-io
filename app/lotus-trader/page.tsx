@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { CONTROLLED_COMPANIES, SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 
 const company = CONTROLLED_COMPANIES.find((c) => c.slug === "lotus-trader")!;
 
-export const metadata: Metadata = {
-  title: SEO.lotus.title,
-  description: SEO.lotus.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.lotus, "/lotus-trader");
 
 export default function LotusPage() {
   return (

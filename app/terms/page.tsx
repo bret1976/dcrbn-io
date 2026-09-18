@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import ContentPage from "@/components/ContentPage";
 import { SEO } from "@/lib/copy";
+import { pageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: SEO.terms.title,
-  description: SEO.terms.description,
-};
+export const metadata: Metadata = pageMetadata(SEO.terms, "/terms");
 
 export default function TermsPage() {
   return (

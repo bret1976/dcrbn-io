@@ -112,6 +112,7 @@ export default function HomeHero() {
           preload="auto"
           poster="/scroll-world/stills/poster-01.jpg"
           onEnded={markSeen}
+          onError={markSeen}
         />
         {needsTap ? (
           <button

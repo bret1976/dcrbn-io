@@ -3,7 +3,6 @@ export const SITE = {
   legalName: "DCRBN LLC",
   domain: "www.dcrbn.io",
   url: "https://www.dcrbn.io",
-  sourceDomain: "iangroup.ai",
   phone: "+1 725-425-4923",
   phoneHref: "tel:+17254254923",
   address: {
@@ -15,14 +14,11 @@ export const SITE = {
   },
   emails: {
     privacy: "privacy@dcrbn.io",
-    privacyLive: "privacy@iangroup.ai",
     legal: "legal@dcrbn.io",
-    legalLive: "legal@iangroup.ai",
     apply: "apply@dcrbn.io",
-    applyLive: "privacy@iangroup.ai",
   },
   positioning:
-    "DCRBN is a Speed to Scale platform for founders building infrastructure in AI, blockchain, and quantum.",
+    "DCRBN is a Las Vegas venture studio providing Speed to Scale for infrastructure companies in AI, blockchain, and quantum.",
   brandLine:
     "DCRBN works on solutions that inspire us — and with founders who have the conviction to build them.",
   missionLine:
@@ -33,7 +29,7 @@ export const CTA = {
   primary: { label: "Apply for Speed to Scale", href: "/apply" },
   secondary: { label: "See How It Works", href: "/growth-cycle" },
   partner: { label: "Explore Strategic Alignment", href: "/strategic-alignment" },
-  partnerForm: { label: "Start the Conversation", href: "/strategic-alignment#align-form" },
+  partnerForm: { label: "Start the Conversation", href: "/contact" },
   submit: { label: "Submit Application", href: "/apply" },
 } as const;
 
@@ -58,6 +54,7 @@ export const FOOTER = {
     { label: "Our Network", href: "/network" },
     { label: "Focus Areas", href: "/focus-areas" },
     { label: "Strategic Alignment", href: "/strategic-alignment" },
+    { label: "Contact", href: "/contact" },
   ],
   start: [
     { label: "Apply for Speed to Scale", href: "/apply" },
@@ -71,5 +68,11 @@ export const FOOTER = {
 
 export function absoluteUrl(path = "/") {
   if (path.startsWith("http")) return path;
+  if (!path || path === "/") return SITE.url;
   return `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+export function formatAddress() {
+  const { street, city, region, postal } = SITE.address;
+  return `${street}, ${city}, ${region} ${postal}`;
 }
